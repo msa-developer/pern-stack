@@ -25,13 +25,10 @@ const connectDB = async () => {
       CREATE TABLE IF NOT EXISTS products(
         id SERIAL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
-        image VARCHAR(255) NOT NULL,
+        image TEXT NOT NULL,
         price DECIMAL(10,2) NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
-    `;
-    await sql`
-      ALTER TABLE products ALTER COLUMN image TYPE VARCHAR(255)
     `;
     console.log("Connected to postgresql");
   } catch (err) {
