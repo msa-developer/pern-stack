@@ -16,8 +16,11 @@ const useProductStore = create((set, get) => ({
 
   CreateProducts: async () => {
     try {
-      const { formData } = get();
+      const { formData, getAllProducts, resetForm } = get();
       await axiosInstance.post(`/`, formData);
+      await getAllProducts();
+      resetForm();
+      toast.success("Product added");
     } catch (err) {
       toast.error("Erorr in CreateProducts function");
     }
