@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage.jsx";
 import useThemeStore from "./zustand/useThemeStore.js";
 import UpdatePage from "./pages/UpdatePage.jsx";
-import CreatePage from "./pages/CreatePage.jsx";
 
 const App = () => {
   const { theme } = useThemeStore();
@@ -13,7 +12,6 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/product/:id" element={<UpdatePage />} />
-        <Route path="/create" element={<CreatePage />} />
       </Routes>
     </div>
   );
