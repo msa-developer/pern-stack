@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 const useProductStore = create((set, get) => ({
   products: [],
-  //form state
+
   formData: {
     name: "",
     price: "",
