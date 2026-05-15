@@ -5,7 +5,7 @@ const HomeNav = ({ getAllProducts }) => {
     <nav className=" max-w-7xl mx-auto p-4 px-5 flex justify-between">
       <button
         className="btn btn-primary sm:text-xl"
-        onClick={() => document.getElementById("modal")}
+        onClick={() => document.getElementById("modal").showModal()}
       >
         <Plus /> Add Product
       </button>
