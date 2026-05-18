@@ -63,6 +63,7 @@ const CreateProduct = () => {
           <button
             type="submit"
             className="btn btn-primary text-lg"
+            disabled={!formData.name || !formData.image || !formData.price}
             onClick={(e) => {
               e.preventDefault();
             }}
