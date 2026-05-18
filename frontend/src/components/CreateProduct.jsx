@@ -1,4 +1,4 @@
-import { CircleX, DollarSign } from "lucide-react";
+import { CircleX, DollarSign, Plus } from "lucide-react";
 import useProductStore from "../zustand/useProductStore";
 
 const CreateProduct = () => {
@@ -50,14 +50,24 @@ const CreateProduct = () => {
               setFormData({ ...formData, price: e.target.value })
             }
           />
+
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-soft text-lg"
             onClick={(e) => {
               e.preventDefault();
             }}
           >
-            Add
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="btn btn-primary text-lg"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <Plus /> Add
           </button>
         </form>
       </main>
