@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 
 const useProductStore = create((set, get) => ({
   products: [],
+  currentProduct: null,
 
   formData: {
     name: "",
@@ -20,6 +21,7 @@ const useProductStore = create((set, get) => ({
       await axiosInstance.post(`/`, formData);
       await getAllProducts();
       resetForm();
+      document.getElementById("modal-box").close();
       toast.success("Product added");
     } catch (err) {
       toast.error("Erorr in CreateProducts function");
@@ -51,17 +53,25 @@ const useProductStore = create((set, get) => ({
     }
   },
 
-  updateProduct: async (id, data) => {
+  updateProduct: async (id) => {
+    const { formData } = get();
+
     try {
-      const res = await axiosInstance.put(`/${id}`, data);
-      set((prev) => ({
-        products: prev.products.map((product) =>
-          product.id === id ? res.data : product,
-        ),
-      }));
-      toast.success("Updated Succesfully");
+      await axiosInstance.put(`/${id}`, formData);
     } catch (error) {
       toast.error("error in updateProduct function");
+    }
+  },
+
+  getProduct: async (id) => {
+    try {
+      const res = await axiosInstance.get(`/${id}`);
+      set({
+        currentProduct: res.data,
+        formData: res.data,
+      });
+    } catch (err) {
+      toast.error(err);
     }
   },
 }));

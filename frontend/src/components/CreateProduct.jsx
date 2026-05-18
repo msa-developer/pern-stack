@@ -2,7 +2,7 @@ import { CircleX, DollarSign, Plus } from "lucide-react";
 import useProductStore from "../zustand/useProductStore";
 
 const CreateProduct = () => {
-  const { CreateProduct, formData, setFormData } = useProductStore();
+  const { CreateProducts, formData, setFormData } = useProductStore();
 
   return (
     <dialog id="modal" className="modal">
@@ -13,7 +13,7 @@ const CreateProduct = () => {
           </button>
         </form>
         <form
-          onSubmit={CreateProduct}
+          onSubmit={CreateProducts}
           className="flex flex-col w-full space-y-4"
         >
           <legend className="fieldset-legend">Add Product</legend>
@@ -64,9 +64,6 @@ const CreateProduct = () => {
             type="submit"
             className="btn btn-primary text-lg"
             disabled={!formData.name || !formData.image || !formData.price}
-            onClick={(e) => {
-              e.preventDefault();
-            }}
           >
             <Plus /> Add
           </button>
